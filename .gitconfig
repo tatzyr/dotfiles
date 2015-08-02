@@ -1,0 +1,11 @@
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[user]
+	name = Tatsuya Otsuka
+	email = tatzyr@gmail.com
+[alias]
+	co = checkout
+[core]
+	editor = nano
