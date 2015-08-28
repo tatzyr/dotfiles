@@ -1,9 +1,8 @@
 #!/bin/sh
 
-for f in .??*
-do
-    [[ "$f" == ".git" ]] && continue
-    [[ "$f" == ".DS_Store" ]] && continue
+for f in .??*; do
+    [ "$f" == ".git" ] && continue
+    [ "$f" == ".DS_Store" ] && continue
 
-    echo ln -s dotfiles/"$f" ~/"$f"
+    echo ln -s ~/dotfiles/"$f" ~/"$f"
 done
