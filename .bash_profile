@@ -34,8 +34,8 @@ fi
 # z/cdhist
 if [ -f /usr/local/etc/profile.d/z.sh ]; then
   . /usr/local/etc/profile.d/z.sh
-elif [ -f ~/dotfiles/cdhist.sh ]; then
-  . ~/rc/dotfiles/cdhist.sh
+elif [ -f $HOME/dotfiles/cdhist.sh ]; then
+  . $HOME/dotfiles/cdhist.sh
 fi
 
 function allupdate {
