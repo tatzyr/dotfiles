@@ -1,3 +1,10 @@
+# Shell
+HISTCONTROL=ignoreboth
+HISTSIZE=10000
+HISTFILESIZE=20000
+shopt -s histappend
+shopt -s checkwinsize
+
 # PATH
 if [ -d $HOME/exe ]; then
   export PATH="$HOME/exe:$PATH"
