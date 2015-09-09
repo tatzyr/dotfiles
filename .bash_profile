@@ -54,15 +54,16 @@ function allupdate {
   brew doctor
 }
 
-function mydb {
+function mylocate {
   if [ -z "$1" ]; then
-    echo "usage: mydb <directory>" 1>&2
+    echo "usage: mylocate <directory>" 1>&2
   else
     find "$1" -print0 | xargs -0 ls -dl
   fi
 }
 
 # エイリアス
-alias l='bundle exec'
+alias be='bundle exec'
+alias r='rails'
 alias s='git status'
-alias sn='git status -uno'
+alias v='vagrant'
