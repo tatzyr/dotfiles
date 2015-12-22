@@ -18,9 +18,9 @@ fi
 function prompt_cmd {
   local s=$?
   if [ $s -eq 0 ] ; then
-    export PS1="[\t] \W 🍣  "
+    export PS1="[\t \h] \W 🍣  "
   else
-    export PS1="[\t] \W 🍕  "
+    export PS1="[\t \h] \W 🍕  "
   fi
 }
 
