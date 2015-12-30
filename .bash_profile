@@ -1,3 +1,9 @@
+# If not running interactively, don't do anything
+case $- in
+  *i*) ;;
+  *) return;;
+esac
+
 # Shell
 HISTCONTROL=ignoreboth
 HISTSIZE=10000
