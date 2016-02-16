@@ -20,18 +20,6 @@ if [ -d "/usr/local/heroku/bin" ]; then
   export PATH="/usr/local/heroku/bin:$PATH"
 fi
 
-# プロンプトに寿司/ピザ
-function prompt_cmd {
-  local s=$?
-  if [ $s -eq 0 ] ; then
-    export PS1="[\t \h] \W 🍣  "
-  else
-    export PS1="[\t \h] \W 🍕  "
-  fi
-}
-
-PROMPT_COMMAND="prompt_cmd;$PROMPT_COMMAND"
-
 # rbenv
 if [ -d "$HOME/.rbenv" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
@@ -51,6 +39,24 @@ elif [ -f "$HOME/dotfiles/cdhist.sh" ]; then
   . $HOME/dotfiles/cdhist.sh
 fi
 
+# エイリアス
+alias be='bundle exec'
+alias r='rails'
+alias s='git status'
+alias v='vagrant'
+
+# プロンプトに寿司/ピザ
+function prompt_cmd {
+  local s=$?
+  if [ $s -eq 0 ] ; then
+    export PS1="[\t \h] \W 🍣  "
+  else
+    export PS1="[\t \h] \W 🍕  "
+  fi
+}
+
+PROMPT_COMMAND="prompt_cmd;$PROMPT_COMMAND"
+
 function allupdate {
   brew update &&
   brew upgrade --all &&
@@ -67,9 +73,3 @@ function mylocate {
     find "$1" -print0 | xargs -0 ls -dl
   fi
 }
-
-# エイリアス
-alias be='bundle exec'
-alias r='rails'
-alias s='git status'
-alias v='vagrant'
