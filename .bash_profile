@@ -32,11 +32,9 @@ if [ -d "$HOME/.pyenv" ]; then
   eval "$(pyenv init -)"
 fi
 
-# z/cdhist
-if [ -f "/usr/local/etc/profile.d/z.sh" ]; then
-  . /usr/local/etc/profile.d/z.sh
-elif [ -f "$HOME/dotfiles/cdhist.sh" ]; then
-  . $HOME/dotfiles/cdhist.sh
+# z
+if [ -f "`brew --prefix`/etc/profile.d/z.sh" ]; then
+  . `brew --prefix`/etc/profile.d/z.sh
 fi
 
 # エイリアス
