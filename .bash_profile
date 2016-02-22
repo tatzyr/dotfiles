@@ -41,8 +41,10 @@ if [ -d "$HOME/.pyenv" ]; then
 fi
 
 # z
-if [ -f "`brew --prefix`/etc/profile.d/z.sh" ]; then
-  . `brew --prefix`/etc/profile.d/z.sh
+if type brew > /dev/null 2>&1; then
+  if [ -f "`brew --prefix`/etc/profile.d/z.sh" ]; then
+    . `brew --prefix`/etc/profile.d/z.sh
+  fi
 fi
 
 # エイリアス
