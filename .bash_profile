@@ -48,7 +48,7 @@ if type brew > /dev/null 2>&1; then
 fi
 
 # エイリアス
-alias be='bundle exec'
+alias b='bundle exec'
 alias r='rails'
 alias s='git status'
 alias v='vagrant'
