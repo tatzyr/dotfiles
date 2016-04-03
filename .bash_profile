@@ -52,6 +52,8 @@ alias b='bundle exec'
 alias r='rails'
 alias s='git status'
 alias v='vagrant'
+alias hs='history | grep '
+alias ql="qlmanage -p 2>/dev/null"
 
 # プロンプトに寿司/ピザ
 function prompt_cmd {
