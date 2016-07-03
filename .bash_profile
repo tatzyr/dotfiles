@@ -53,7 +53,7 @@ alias r='rails'
 alias s='git status'
 alias t="ruby -rtime -e 'puts Time.now.iso8601'"
 alias v='vagrant'
-alias hs='history | grep '
+alias hs='history | egrep'
 alias ql="qlmanage -p 2>/dev/null"
 
 # プロンプトに寿司/ピザ
