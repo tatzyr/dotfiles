@@ -51,6 +51,7 @@ fi
 alias b='bundle exec'
 alias r='rails'
 alias s='git status'
+alias t="ruby -rtime -e 'puts Time.now.iso8601'"
 alias v='vagrant'
 alias hs='history | grep '
 alias ql="qlmanage -p 2>/dev/null"
