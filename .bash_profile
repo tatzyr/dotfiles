@@ -70,7 +70,7 @@ PROMPT_COMMAND="prompt_cmd;$PROMPT_COMMAND"
 
 function allupdate {
   brew update &&
-  brew upgrade --all &&
+  brew upgrade &&
   rbenv update &&
   gem update --system &&
   gem update &&
