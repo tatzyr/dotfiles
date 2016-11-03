@@ -55,6 +55,8 @@ alias t="ruby -rtime -e 'puts Time.now.iso8601'"
 alias v='vagrant'
 alias hs='history | egrep'
 alias ql="qlmanage -p 2>/dev/null"
+alias HandBrakeCLINormal='HandBrakeCLI -e x264 -q 20.0 -a 1 -E faac -B 160 -6 dpl2 -R Auto -D 0.0 --audio-copy-mask aac,ac3,dtshd,dts,mp3 --audio-fallback ffac3 -f mp4 --loose-anamorphic --modulus 2 -m --x264-preset veryfast --h264-profile main --h264-level 4.0'
+alias HandBrakeCLIHighProfile='HandBrakeCLI -e x264 -q 20.0 -a 1,1 -E faac,copy:ac3 -B 160,160 -6 dpl2,auto -R Auto,Auto -D 0.0,0.0 --audio-copy-mask aac,ac3,dtshd,dts,mp3 --audio-fallback ffac3 -f mp4 -4 --decomb --loose-anamorphic --modulus 2 -m --x264-preset medium --h264-profile high --h264-level 4.1'
 
 # プロンプトに寿司/ピザ
 function prompt_cmd {
