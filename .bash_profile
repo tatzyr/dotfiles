@@ -37,7 +37,9 @@ fi
 # pyenv
 if [ -d "$HOME/.pyenv" ]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
+  export VIRTUAL_ENV_DISABLE_PROMPT=1
   eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 fi
 
 # z
