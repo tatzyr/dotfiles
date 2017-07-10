@@ -20,8 +20,8 @@ if [ -d "$HOME/.linuxbrew" ]; then
 fi
 
 # PATH
-if [ -d "$HOME/exe" ]; then
-  export PATH="$HOME/exe:$PATH"
+if [ -d "$HOME/bin" ]; then
+  export PATH="$HOME/bin:$PATH"
 fi
 
 if [ -d "/usr/local/heroku/bin" ]; then
