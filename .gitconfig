@@ -7,8 +7,10 @@
 	email = tatzyr@gmail.com
 [alias]
 	co = checkout
+	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
 [core]
 	editor = nano
 	quotepath = false
+	excludesfile = $HOME/.gitignore_global
 [log]
 	date = iso8601
