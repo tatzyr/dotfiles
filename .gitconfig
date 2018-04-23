@@ -9,5 +9,6 @@
 	co = checkout
 [core]
 	editor = nano
+	quotepath = false
 [log]
 	date = iso8601

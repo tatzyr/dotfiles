@@ -4,10 +4,11 @@ case $- in
   *) return;;
 esac
 
-# Shell
-HISTCONTROL=ignoreboth
-HISTSIZE=10000
-HISTFILESIZE=20000
+### Shell
+export HISTSIZE=10000
+export HISTFILESIZE=20000
+export HISTCONTROL=ignoreboth
+export HISTFILE=~/._bash_history
 shopt -s histappend
 shopt -s checkwinsize
 
@@ -19,13 +20,14 @@ if [ -d "$HOME/.linuxbrew" ]; then
   export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
 fi
 
-# PATH
+# path
 if [ -d "$HOME/bin" ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
-if [ -d "/usr/local/heroku/bin" ]; then
-  export PATH="/usr/local/heroku/bin:$PATH"
+# adb
+if [ -d "$HOME/Library/Android/sdk/platform-tools" ]; then
+  export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 fi
 
 # rbenv
@@ -42,6 +44,12 @@ if [ -d "$HOME/.pyenv" ]; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+# ndenv
+if [ -d "$HOME/.ndenv" ]; then
+  export PATH="$HOME/.ndenv/bin:$PATH"
+  eval "$(ndenv init -)"
+fi
+
 # z
 if type brew > /dev/null 2>&1; then
   if [ -f "`brew --prefix`/etc/profile.d/z.sh" ]; then
@@ -49,7 +57,10 @@ if type brew > /dev/null 2>&1; then
   fi
 fi
 
-# エイリアス
+# exports
+export RUBYGEMS_GEMDEPS=-
+
+# ls color
 if [ "$(uname)" == 'Darwin' ]; then
   export LSCOLORS=GxFxDxBxCxegedabagacad
   alias ls='ls -G'
@@ -58,27 +69,32 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
   alias ls='ls --color=auto'
 fi
 
-alias b='bundle exec'
-alias r='rails'
+# aliases
+alias b='git branch --sort=committerdate'
 alias s='git status'
-alias t="ruby -rtime -e 'puts Time.now.iso8601'"
-alias v='vagrant'
-alias hs='history | egrep'
-alias la='ls -Al'
-alias lS='ls -AlSrh'
-alias lt='ls -Altr'
-alias ql="qlmanage -p 2>/dev/null"
 alias HandBrakeCLINormal='HandBrakeCLI -e x264 -q 20.0 -a 1 -E faac -B 160 -6 dpl2 -R Auto -D 0.0 --audio-copy-mask aac,ac3,dtshd,dts,mp3 --audio-fallback ffac3 -f mp4 --loose-anamorphic --modulus 2 -m --x264-preset veryfast --h264-profile main --h264-level 4.0'
 alias HandBrakeCLIHighProfile='HandBrakeCLI -e x264 -q 20.0 -a 1,1 -E faac,copy:ac3 -B 160,160 -6 dpl2,auto -R Auto,Auto -D 0.0,0.0 --audio-copy-mask aac,ac3,dtshd,dts,mp3 --audio-fallback ffac3 -f mp4 -4 --decomb --loose-anamorphic --modulus 2 -m --x264-preset medium --h264-profile high --h264-level 4.1'
 
-# プロンプトに寿司/ピザ
+# prompt
 function prompt_cmd {
   local s=$?
-  if [ $s -eq 0 ] ; then
-    export PS1="[\t \h] \W 🍣  "
+
+  # time and hostname
+  PS1='[\t \h] '
+
+  local branch=$(git branch 2>/dev/null | grep '^*')
+  if [ "$branch" = "* master" -o -z "$branch" ]; then
+    PS1="$PS1"'\W '
   else
-    export PS1="[\t \h] \W 🍕  "
+    PS1="$PS1"'$(tput bold)$(tput setaf 5)\W$(tput sgr0) '
   fi
+
+  if [ $s -eq 0 ]; then
+    PS1="$PS1"'\$ '
+  else
+    PS1="$PS1"'$(tput bold)$(tput setaf 1)\$$(tput sgr0) '
+  fi
+  export PS1
 }
 
 PROMPT_COMMAND="prompt_cmd;$PROMPT_COMMAND"
@@ -86,16 +102,7 @@ PROMPT_COMMAND="prompt_cmd;$PROMPT_COMMAND"
 function allupdate {
   brew update &&
   brew upgrade &&
-  rbenv update &&
   gem update --system &&
   gem update &&
   brew doctor
-}
-
-function mylocate {
-  if [ -z "$1" ]; then
-    echo "usage: mylocate <directory>" 1>&2
-  else
-    find "$1" -print0 | xargs -0 ls -dl
-  fi
 }
