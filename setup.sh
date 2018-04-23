@@ -11,4 +11,4 @@ done
 echo
 
 echo "$(tput bold)$(tput setaf 6)Your git identity$(tput sgr0)"
-git config --list | grep '^user\.'
+egrep '^\s+(name|email) = ' .gitconfig
