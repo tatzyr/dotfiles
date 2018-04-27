@@ -11,6 +11,7 @@ export HISTCONTROL=ignoreboth
 export HISTFILE=~/._bash_history
 shopt -s histappend
 shopt -s checkwinsize
+export PS1='[\t \h] \W \$ '
 
 # Linuxbrew
 if [ -d "$HOME/.linuxbrew" ]; then
@@ -85,8 +86,6 @@ function prompt_cmd {
   if [ $s -ne 0 ]; then
     echo "$(tput bold)$(tput setaf 1)[exit $s]$(tput sgr0)"
   fi
-
-  export PS1='[\t \h] \W \$ '
 }
 
 PROMPT_COMMAND="prompt_cmd;$PROMPT_COMMAND"
