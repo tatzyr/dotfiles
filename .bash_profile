@@ -82,23 +82,11 @@ alias HandBrakeCLIHighProfile='HandBrakeCLI -e x264 -q 20.0 -a 1,1 -E faac,copy:
 # prompt
 function prompt_cmd {
   local s=$?
-
-  # time and hostname
-  PS1='[\t \h] '
-
-  local branch=$(git branch 2>/dev/null | grep '^*')
-  if [ "$branch" = "* master" -o -z "$branch" ]; then
-    PS1="$PS1"'\W '
-  else
-    PS1="$PS1"'$(tput bold)$(tput setaf 5)\W$(tput sgr0) '
+  if [ $s -ne 0 ]; then
+    echo "$(tput bold)$(tput setaf 1)[exit $s]$(tput sgr0)"
   fi
 
-  if [ $s -eq 0 ]; then
-    PS1="$PS1"'\$ '
-  else
-    PS1="$PS1"'$(tput bold)$(tput setaf 1)\$$(tput sgr0) '
-  fi
-  export PS1
+  export PS1='[\t \h] \W \$ '
 }
 
 PROMPT_COMMAND="prompt_cmd;$PROMPT_COMMAND"
