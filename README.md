@@ -7,7 +7,7 @@
 ### Download
 
 ```
-$ git clone https://github.com/Tatzyr/dotfiles.git
+$ git clone https://github.com/tatzyr/dotfiles.git
 ```
 
 ### Initial Setup
@@ -19,7 +19,7 @@ $ ./install_dotfiles.sh
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Tatzyr/dotfiles.
+Bug reports and pull requests are welcome on GitHub at https://github.com/tatzyr/dotfiles.
 
 
 ## Licence
