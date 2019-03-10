@@ -58,9 +58,6 @@ if type brew > /dev/null 2>&1; then
   fi
 fi
 
-# exports
-export RUBYGEMS_GEMDEPS=-
-
 # ls color
 if [ "$(uname)" == 'Darwin' ]; then
   export LSCOLORS=GxFxDxBxCxegedabagacad
@@ -96,4 +93,12 @@ function allupdate {
   gem update --system &&
   gem update &&
   brew doctor
+}
+
+function mylocate {
+  if [ -z "$1" ]; then
+    echo "usage: mylocate <directory>" 1>&2
+  else
+    find "$1" -print0 | xargs -0 ls -dl
+  fi
 }
