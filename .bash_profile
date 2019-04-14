@@ -42,13 +42,12 @@ if [ -d "$HOME/.pyenv" ]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
   export VIRTUAL_ENV_DISABLE_PROMPT=1
   eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
 fi
 
-# ndenv
-if [ -d "$HOME/.ndenv" ]; then
-  export PATH="$HOME/.ndenv/bin:$PATH"
-  eval "$(ndenv init -)"
+# nodenv
+if [ -d "$HOME/.nodenv" ]; then
+  export PATH="$HOME/.nodenv/bin:$PATH"
+  eval "$(nodenv init -)"
 fi
 
 # z
