@@ -25,6 +25,9 @@ fi
 if [ -d "$HOME/bin" ]; then
   export PATH="$HOME/bin:$PATH"
 fi
+if [ -d "$HOME/bin/bin_private" ]; then
+  export PATH="$HOME/bin/bin_private:$PATH"
+fi
 export PATH="/usr/local/sbin:$PATH"
 
 # adb
