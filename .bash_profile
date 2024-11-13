@@ -13,12 +13,13 @@ shopt -s histappend
 shopt -s checkwinsize
 export PS1='[\t \h] \W \$ '
 
-# Linuxbrew
-if [ -d "$HOME/.linuxbrew" ]; then
-  export PATH="$HOME/.linuxbrew/bin:$PATH"
-  export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-  export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-  export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
+# brew
+if [ -f "/usr/local/bin/brew" ]; then
+  eval $(/usr/local/bin/brew shellenv)
+  alias ibrew='arch -x86_64 /usr/local/bin/brew'
+fi
+if [ -f "/opt/homebrew/bin/brew" ]; then
+  eval $(/opt/homebrew/bin/brew shellenv)
 fi
 
 # path
