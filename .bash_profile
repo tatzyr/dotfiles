@@ -32,23 +32,9 @@ if [ -d "$HOME/Library/Android/sdk/platform-tools" ]; then
   export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
 fi
 
-# rbenv
-if [ -d "$HOME/.rbenv" ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
-# pyenv
-if [ -d "$HOME/.pyenv" ]; then
-  export PATH="$HOME/.pyenv/bin:$PATH"
-  export VIRTUAL_ENV_DISABLE_PROMPT=1
-  eval "$(pyenv init -)"
-fi
-
-# nodenv
-if [ -d "$HOME/.nodenv" ]; then
-  export PATH="$HOME/.nodenv/bin:$PATH"
-  eval "$(nodenv init -)"
+# mise
+if type mise > /dev/null 2>&1; then
+  eval "$(mise activate bash)"
 fi
 
 # z
