@@ -14,10 +14,6 @@ shopt -s checkwinsize
 export PS1='[\t \h] \W \$ '
 
 # brew
-if [ -f "/usr/local/bin/brew" ]; then
-  eval $(/usr/local/bin/brew shellenv)
-  alias ibrew='arch -x86_64 /usr/local/bin/brew'
-fi
 if [ -f "/opt/homebrew/bin/brew" ]; then
   eval $(/opt/homebrew/bin/brew shellenv)
 fi
